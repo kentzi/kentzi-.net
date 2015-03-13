@@ -14,8 +14,7 @@ namespace KentziTest
         {
             for (int i = 0; i < 1; i++)
             {
-                KentziClient kc = new KentziClient();
-                kc.CreateKentziUser("lalongooo", "hdez.jeduardo@gmail.com", "");
+                new KentziClient().CreateKentziUser("lalongooo", "hdez.jeduardo@gmail.com", "");
             }
             
             return 0;

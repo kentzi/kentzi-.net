@@ -11,9 +11,9 @@ namespace Kentzi
     public class KentziClient
     {
 
-        public const string BASE_URL = "http://kentzi.herokuapp.com/api/";
+        private const string BASE_URL = "http://kentzi.herokuapp.com/api/";
 
-        public void doRequest()
+        private void doRequest()
         {
             var client = GetRestClient();
 
@@ -42,6 +42,8 @@ namespace Kentzi
             Console.WriteLine(content);
 
         }
+
+
 
         private RestClient GetRestClient()
         {
