@@ -9,11 +9,11 @@ namespace Kentzi.Model
 
     public class KentziItem
     {
-        public long itemId { get; set; }
-        public String longName { get; set; }
-        public String shortName { get; set; }
-        public double itemPrice { get; set; }
-        public double itemTax { get; set; }
-        public double quantity { get; set; }
+        public long ItemId { get; set; }
+        public String LongName { get; set; }
+        public String ShortName { get; set; }
+        public double ItemPrice { get; set; }
+        public double ItemTax { get; set; }
+        public double Quantity { get; set; }
     }
 }

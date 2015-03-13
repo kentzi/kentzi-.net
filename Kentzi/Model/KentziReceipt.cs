@@ -8,13 +8,13 @@ namespace Kentzi.Model
 {
     public class KentziReceipt
     {
-        public String mobileNumber { get; set; }
+        public String MobileNumber { get; set; }
         public string StoreId { get; set; }
         public string ReceiptCode { get; set; }
         public double Amount { get; set; }
-        public double discount { get; set; }
-        public string hostName { get; set; }
-        public DateTime date { get; set; }
+        public double Discount { get; set; }
+        public string HostName { get; set; }
+        public DateTime Date { get; set; }
         public List<KentziLineItem> lineItems { get; set; }
     }
 }
