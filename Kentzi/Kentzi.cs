@@ -11,7 +11,7 @@ namespace Kentzi
     public class KentziClient
     {
 
-        public const string BASE_URL = "http://tyket.herokuapp.com/api/";
+        public const string BASE_URL = "http://kentzi.herokuapp.com/api/";
 
         public void doRequest()
         {
@@ -28,12 +28,14 @@ namespace Kentzi
             Console.WriteLine(content);
         }
 
-        public void CreateKentziUser(String username) {
+        public void CreateKentziUser(String name, String email, String birthdate) {
 
             var client = GetRestClient();
             var request = new RestRequest("users/", Method.POST);
 
-            request.AddParameter("username", username + Utils.Utils.GetTimestamp(System.DateTime.Now));
+            request.AddParameter("email", email);
+            request.AddParameter("name", name + " - " + Utils.Utils.GetTimestamp(System.DateTime.Now));
+            request.AddParameter("birthdate", birthdate);
             // execute the request
             IRestResponse response = client.Execute(request);
             var content = response.Content; // raw content as string
@@ -43,7 +45,7 @@ namespace Kentzi
 
         private RestClient GetRestClient()
         {
-            return new RestClient("http://tyket.herokuapp.com/api/");
+            return new RestClient(BASE_URL);
         }
 
     }

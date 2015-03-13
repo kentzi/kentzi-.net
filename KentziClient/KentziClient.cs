@@ -12,8 +12,11 @@ namespace KentziTest
     {
         static int Main(string[] args)
         {
-            KentziClient kc = new KentziClient();
-            kc.CreateKentziUser("lalongooo3");
+            for (int i = 0; i < 1; i++)
+            {
+                KentziClient kc = new KentziClient();
+                kc.CreateKentziUser("lalongooo", "hdez.jeduardo@gmail.com", "");
+            }
             
             return 0;
         }
