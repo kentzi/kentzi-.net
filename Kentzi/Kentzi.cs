@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kentzi.Utils;
+using Kentzi.Model;
 
 namespace Kentzi
 {
@@ -41,6 +42,10 @@ namespace Kentzi
             var content = response.Content; // raw content as string
             Console.WriteLine(content);
 
+        }
+
+        public void postReceipt(KentziReceipt receipt) { 
+        
         }
 
 
