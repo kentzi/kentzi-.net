@@ -45,7 +45,6 @@
     <Compile Include="Model\KentziReceipt.cs" />
     <Compile Include="Model\KentziItem.cs" />
     <Compile Include="Model\KentziLineItem.cs" />
-    <Compile Include="Model\KentziReceipt_.cs" />
     <Compile Include="Kentzi.cs" />
     <Compile Include="Model\KentziUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
