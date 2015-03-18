@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kentzi.Model
 {
-    class KentziLineItem
+    public class KentziLineItem
     {
         private string code;
         public string Code
