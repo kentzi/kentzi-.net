@@ -9,39 +9,10 @@ namespace Kentzi.Model
     public class KentziUser
     {
 
-        private String mobileNumber;
-        private String email;
-        private String firstName;
-        private String lastName;
-
-        public KentziUser(String mobileNumber)
-        {
-            this.mobileNumber = mobileNumber;
-        }
-
-        public String MobileNumber
-        {
-            get { return mobileNumber; }
-            set { mobileNumber = value; }
-        }
-
-        public String Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-
-        public String LastName
-        {
-            get { return lastName; }
-            set { lastName = value; }
-        }
-
-        public String FirstName
-        {
-            get { return firstName; }
-            set { firstName = value; }
-        }
+        private String MobileNumber { get; set; }
+        private String Email { get; set; }
+        private String FirstName { get; set; }
+        private String LastName { get; set; }
 
     }
 }
