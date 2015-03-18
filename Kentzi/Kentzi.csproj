@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Model\KentziReceipt.cs" />
-    <Compile Include="Model\KentziItem.cs" />
     <Compile Include="Model\KentziLineItem.cs" />
     <Compile Include="Kentzi.cs" />
     <Compile Include="Model\KentziUser.cs" />
