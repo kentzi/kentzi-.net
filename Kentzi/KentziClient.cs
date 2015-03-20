@@ -55,5 +55,11 @@ namespace Kentzi
             return new RestClient(BASE_URL);
         }
 
+		public Store getStore(string storeId){
+
+			return GetRestClient()
+				.Execute<KentziStore>(new RestRequest("stores/{id}", Method.GET).AddUrlSegment("id", storeId)).Data;
+		}
+
     }
 }

@@ -12,10 +12,14 @@ namespace KentziTest
     {
         static int Main(string[] args)
         {
-            for (int i = 0; i < 1; i++)
-            {
-                new KentziClient().CreateKentziUser("lalongooo", "hdez.jeduardo@gmail.com", "");
-            }
+
+
+			new KentziClient ().getStore ("1");
+
+//            for (int i = 0; i < 1; i++)
+//            {
+//                new KentziClient().CreateKentziUser("lalongooo", "hdez.jeduardo@gmail.com", "");
+//            }
             
             return 0;
         }
