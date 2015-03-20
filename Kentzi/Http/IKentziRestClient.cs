@@ -5,7 +5,9 @@ namespace Kentzi
 {
 	public interface IKentziRestClient
 	{
-		RestClient RestClient { get; }
+        RestClient KentziRestClient { get; private set; }
+
+        IStoresClient Store { get;  }
 	}
 }
 

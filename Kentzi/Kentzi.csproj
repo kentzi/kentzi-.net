@@ -42,6 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\ApiClient.cs" />
+    <Compile Include="Clients\IStoresClient.cs" />
+    <Compile Include="KentzClientRC.cs" />
     <Compile Include="Model\KentziReceipt.cs" />
     <Compile Include="Model\KentziLineItem.cs" />
     <Compile Include="Model\KentziUser.cs" />
@@ -61,8 +64,5 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup>
-    <Folder Include="Clients\" />
-    <Folder Include="Http\" />
-  </ItemGroup>
+  <ItemGroup />
 </Project>
