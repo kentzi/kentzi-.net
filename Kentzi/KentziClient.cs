@@ -1,59 +1,83 @@
-﻿using RestSharp;
-using System;
+﻿using System;
+using RestSharp;
+using RestSharp.Extensions;
+using System.Text;
 
 namespace Kentzi
 {
-    public class KentziClientDeprecated
-    {
+	public abstract partial class KentziClient
+	{
 
-        private const string BASE_URL = "http://kentzi.herokuapp.com/api/";
+		/// <summary>
+		/// Base URL of the Kentzi API
+		/// </summary>
+		public string BaseUrl { get; private set; }
 
-        private void doRequest()
-        {
-            var client = GetRestClient();
+		/// <summary>
+		/// StoreId
+		/// </summary>
+		public string StoreId { get; set; }
 
-            var request = new RestRequest("users/{id}/", Method.GET);
-
-            request.AddUrlSegment("id", "1");
-
-
-            // execute the request
-            IRestResponse response = client.Execute(request);
-            var content = response.Content; // raw content as string
-            Console.WriteLine(content);
-        }
-
-        public void CreateKentziUser(String name, String email, String birthdate) {
-
-            var client = GetRestClient();
-            var request = new RestRequest("users/", Method.POST);
-
-            request.AddParameter("email", email);
-            request.AddParameter("name", name + " - " + Utils.Utils.GetTimestamp(System.DateTime.Now));
-            request.AddParameter("birthdate", birthdate);
-            // execute the request
-            IRestResponse response = client.Execute(request);
-            var content = response.Content; // raw content as string
-            Console.WriteLine(content);
-
-        }
-
-        public void postReceipt(KentziReceipt receipt) { 
-        
-        }
+		protected RestClient _client;
 
 
+		/// <summary>
+		/// Initializes a new client with the specified credentials.
+		/// </summary>
+		/// <param name="storeId">The Id assigned to each store</param>
+		/// <param name="baseUrl">Base URL of the Kentzi API</param>
+		public KentziClient(string storeId, string baseUrl){
+			StoreId = storeId;
+			BaseUrl = baseUrl;
 
-        private RestClient GetRestClient()
-        {
-            return new RestClient(BASE_URL);
-        }
-
-		public KentziStore getStore(string storeId){
-
-			return GetRestClient()
-				.Execute<KentziStore>(new RestRequest("stores/{id}", Method.GET).AddUrlSegment("id", storeId)).Data;
+			_client = new RestClient();
+			_client.UserAgent = "kentzi-csharp/(.NET " + Environment.Version.ToString() + ")";
+			_client.AddDefaultHeader("Accept-charset", "utf-8");
+			_client.BaseUrl = BaseUrl;
+			_client.Timeout = 30500;
 		}
 
-    }
+
+		/// <summary>
+		/// Execute a manual REST request
+		/// </summary>
+		/// <typeparam name="T">The type of object to create and populate with the returned data.</typeparam>
+		/// <param name="request">The RestRequest to execute (will use client credentials)</param>
+		public virtual T Execute<T>(IRestRequest request) where T : new()
+		{
+			request.OnBeforeDeserialization = (resp) =>
+			{
+				// for individual resources when there's an error to make
+				// sure that RestException props are populated
+				if (((int)resp.StatusCode) >= 400)
+				{
+					// have to read the bytes so .Content doesn't get populated
+					string restException = "{{ \"RestException\" : {0} }}";
+					var content = resp.RawBytes.AsString(); //get the response content
+					var newJson = string.Format(restException, content);
+
+					resp.Content = null;
+					resp.RawBytes = Encoding.UTF8.GetBytes(newJson.ToString());
+				}
+			};
+
+			var response = _client.Execute<T>(request);
+			return response.Data;
+		}
+
+	}
+
+	/// <summary>
+	/// The Kentzi REST API wrapper.
+	/// </summary>
+	public partial class KentziRestClient : KentziClient
+	{
+		/// <summary>
+		/// Initializes a new client with the specified credentials.
+		/// </summary>
+		/// <param name="storeId">The Id assigned to each store</param>
+		public KentziRestClient(string storeId) : base(storeId, "http://kentzi.herokuapp.com/api/")
+		{
+		}
+	}
 }
