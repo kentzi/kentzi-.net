@@ -12,14 +12,14 @@ namespace Kentzi
 		{
 			Require.Argument("receipt", receipt);
 
-			var request = new RestRequest(Method.POST);
+            var request = new RestRequest(Method.POST);
+            request.RequestFormat = DataFormat.Json;
+            request.JsonSerializer = new JsonSerializer();
 			request.Resource = "receipts/";
-			request.AddParameter("application/json; charset=utf-8", new JsonSerializer().Serialize (receipt), ParameterType.RequestBody);
-			request.RequestFormat = DataFormat.Json;
+            request.AddBody(receipt);
 
 			return Execute<KentziReceipt>(request);
 		}
 		  
 	}
 }
-

@@ -10,7 +10,7 @@ namespace Kentzi
     {
 		public KentziReceipt() {}
 
-        public KentziReceipt(string mobileNumber, string storeId, string receiptCode, double amount, double discount, string hostName, DateTime dateTime, List<KentziLineItem> lineItems)
+        public KentziReceipt(string mobileNumber, string storeId, string receiptCode, double amount, double discount, string hostName, string dateTime, List<KentziLineItem> lineItems)
         {
 			
             this.mobileNumber = mobileNumber;
@@ -26,7 +26,7 @@ namespace Kentzi
 		/// <summary>
 		/// The mobile number where the SMS will be sent with the summary of the receipt
 		/// </summary>
-        public String mobileNumber { get; set; }
+        public string mobileNumber { get; set; }
 		/// <summary>
 		/// The Id assignede to each store
 		/// </summary>
@@ -50,7 +50,7 @@ namespace Kentzi
 		/// <summary>
 		/// Date and time when the receipt was generated
 		/// </summary>
-        public DateTime date { get; set; }
+        public string date { get; set; }
 		/// <summary>
 		/// A list with the products in the receipt
 		/// </summary>
