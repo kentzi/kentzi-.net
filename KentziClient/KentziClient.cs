@@ -15,7 +15,7 @@ namespace KentziTest
 				new KentziLineItem("0000001", "1000","Coke", "Coke 500 ml", 10.0, 2.0, 3)
 			};
 
-			KentziReceipt o = new KentziReceipt ("8116916048", kentzi.StoreId, "0000001", 99.0, 10.0, "localhost", DateTime.Now, lineItems);
+			KentziReceipt o = new KentziReceipt ("8116916048", kentzi.StoreId, "0000001", 99.0, 10.0, "localhost", DateTime.Now.ToString("yyyy-MM-dd"), lineItems);
 			KentziReceipt i =  kentzi.SendReceipt(o);
 			Console.WriteLine(i.amount);
 
