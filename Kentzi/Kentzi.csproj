@@ -52,6 +52,7 @@
     <Compile Include="KentziClient.cs" />
     <Compile Include="Http\IKentziRestClient.cs" />
     <Compile Include="Http\KentziRestClient.cs" />
+    <Compile Include="KentziClientRC.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
