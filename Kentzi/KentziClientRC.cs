@@ -1,9 +1,11 @@
 ﻿using System;
 using RestSharp;
+using RestSharp.Extensions;
+using System.Text;
 
 namespace Kentzi
 {
-	public abstract class KentziClient
+	public abstract partial class KentziClient
 	{
 
 		/// <summary>
@@ -14,7 +16,7 @@ namespace Kentzi
 		/// <summary>
 		/// StoreId
 		/// </summary>
-		protected string StoreId { get; set; }
+		public string StoreId { get; set; }
 
 		protected RestClient _client;
 
@@ -29,7 +31,7 @@ namespace Kentzi
 			BaseUrl = baseUrl;
 
 			_client = new RestClient();
-			_client.UserAgent = "kentzi-csharp/" + version + " (.NET " + Environment.Version.ToString() + ")";
+			_client.UserAgent = "kentzi-csharp/(.NET " + Environment.Version.ToString() + ")";
 			_client.AddDefaultHeader("Accept-charset", "utf-8");
 			_client.BaseUrl = BaseUrl;
 			_client.Timeout = 30500;
@@ -63,5 +65,19 @@ namespace Kentzi
 			return response.Data;
 		}
 
+	}
+
+	/// <summary>
+	/// The Kentzi REST API wrapper.
+	/// </summary>
+	public partial class KentziRestClient : KentziClient
+	{
+		/// <summary>
+		/// Initializes a new client with the specified credentials.
+		/// </summary>
+		/// <param name="storeId">The Id assigned to each store</param>
+		public KentziRestClient(string storeId) : base(storeId, "http://kentzi.herokuapp.com/api/")
+		{
+		}
 	}
 }

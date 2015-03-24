@@ -47,12 +47,13 @@
     <Compile Include="Model\KentziUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\Utils.cs" />
-    <Compile Include="Clients\StoresClient.cs" />
     <Compile Include="Model\KentziStore.cs" />
     <Compile Include="KentziClient.cs" />
     <Compile Include="Http\IKentziRestClient.cs" />
-    <Compile Include="Http\KentziRestClient.cs" />
     <Compile Include="KentziClientRC.cs" />
+    <Compile Include="Model\KentziBase.cs" />
+    <Compile Include="Model\RestException.cs" />
+    <Compile Include="Http\Receipt.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
@@ -63,7 +64,6 @@
   </Target>
   -->
   <ItemGroup>
-    <Folder Include="Clients\" />
     <Folder Include="Http\" />
   </ItemGroup>
 </Project>

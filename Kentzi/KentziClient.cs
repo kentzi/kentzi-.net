@@ -1,15 +1,9 @@
 ﻿using RestSharp;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Kentzi.Utils;
-using Kentzi.Model;
 
 namespace Kentzi
 {
-    public class KentziClient
+    public class KentziClientDeprecated
     {
 
         private const string BASE_URL = "http://kentzi.herokuapp.com/api/";
@@ -55,7 +49,7 @@ namespace Kentzi
             return new RestClient(BASE_URL);
         }
 
-		public Store getStore(string storeId){
+		public KentziStore getStore(string storeId){
 
 			return GetRestClient()
 				.Execute<KentziStore>(new RestRequest("stores/{id}", Method.GET).AddUrlSegment("id", storeId)).Data;
