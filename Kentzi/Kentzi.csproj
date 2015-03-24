@@ -49,8 +49,6 @@
     <Compile Include="Utils\Utils.cs" />
     <Compile Include="Model\KentziStore.cs" />
     <Compile Include="KentziClient.cs" />
-    <Compile Include="Http\IKentziRestClient.cs" />
-    <Compile Include="KentziClientRC.cs" />
     <Compile Include="Model\KentziBase.cs" />
     <Compile Include="Model\RestException.cs" />
     <Compile Include="Http\Receipt.cs" />
@@ -63,5 +61,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
-  <ItemGroup />
 </Project>

@@ -2,6 +2,7 @@
 using RestSharp;
 using RestSharp.Extensions;
 using System.Text;
+using RestSharp.Serializers;
 
 namespace Kentzi
 {
@@ -20,6 +21,8 @@ namespace Kentzi
 
 		protected RestClient _client;
 
+        protected RestRequest _request;
+
 
 		/// <summary>
 		/// Initializes a new client with the specified credentials.
@@ -35,6 +38,11 @@ namespace Kentzi
 			_client.AddDefaultHeader("Accept-charset", "utf-8");
 			_client.BaseUrl = BaseUrl;
 			_client.Timeout = 30500;
+
+            _request = new RestRequest();
+            _request.RequestFormat = DataFormat.Json;
+            _request.JsonSerializer = new JsonSerializer();
+            _request.Method = Method.POST;
 		}
 
 
