@@ -10,7 +10,7 @@ namespace Kentzi
     {
 		public KentziReceipt() {}
 
-        public KentziReceipt(string mobileNumber, string storeId, string receiptCode, double amount, double discount, string hostName, string dateTime, List<KentziLineItem> lineItems)
+		public KentziReceipt(string mobileNumber, string storeId, string receiptCode, double amount, double discount, string hostName, DateTime dateTime, List<KentziLineItem> lineItems)
         {
 			
             this.mobileNumber = mobileNumber;
@@ -20,7 +20,7 @@ namespace Kentzi
             this.discount = discount;
             this.host_name = hostName;
             this.date = dateTime;
-            this.lineItems = lineItems;
+            this.lineitems = lineItems;
         }
         
 		/// <summary>
@@ -50,10 +50,10 @@ namespace Kentzi
 		/// <summary>
 		/// Date and time when the receipt was generated
 		/// </summary>
-        public string date { get; set; }
+		public DateTime date { get; set; }
 		/// <summary>
 		/// A list with the products in the receipt
 		/// </summary>
-        public List<KentziLineItem> lineItems { get; set; }
+        public List<KentziLineItem> lineitems { get; set; }
     }
 }
